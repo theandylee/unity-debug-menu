@@ -25,6 +25,8 @@ namespace Utils
             }
         }
 
+        public Action<bool> OnToggle; 
+        
         private UIDocument _document;
         private VisualTreeAsset _itemAsset;
         private VisualElement _listRoot;
@@ -91,6 +93,8 @@ namespace Utils
         {
             _instance.Active = !_instance.Active;
 
+            OnToggle?.Invoke(_instance.Active);
+            
             if (_instance.Active)
                 SetPage(_rootPage);
         }
