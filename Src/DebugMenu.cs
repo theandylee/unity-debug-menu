@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace HungryCouch.DebugMenu
+namespace DebugMenu
 {
     public class DebugMenu : MonoBehaviour
     {

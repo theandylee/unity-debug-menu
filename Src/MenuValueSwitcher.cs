@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.UIElements;
 
-namespace HungryCouch.DebugMenu
+namespace DebugMenu
 {
     public class MenuValueSwitcher : MenuItem
     {

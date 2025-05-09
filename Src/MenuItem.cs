@@ -1,6 +1,6 @@
 using UnityEngine.UIElements;
 
-namespace HungryCouch.DebugMenu
+namespace DebugMenu
 {
     public abstract class MenuItem
     {
