@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/DebugMenu/Resources/DebugMenu/ItemStyle.uss?fileID=7433441132597879392&amp;guid=67b278399d89b3140ba6bff7604d57f3&amp;type=3#ItemStyle" />
+    <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Item" class="menuitem" />
+</ui:UXML>
