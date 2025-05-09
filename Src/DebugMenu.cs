@@ -29,8 +29,8 @@ namespace Utils
         private VisualTreeAsset _itemAsset;
         private VisualElement _listRoot;
         private Label _pathLabel;
-        private MenuPage _rootPage;
-        private MenuPage _currentPage;
+        private DebugMenuPage _rootPage;
+        private DebugMenuPage _currentPage;
         private readonly StringBuilder _stringBuilder = new(1024);
 
         private bool Active
@@ -44,7 +44,7 @@ namespace Utils
             }
         }
 
-        private void AddMenuItem(string path, MenuItem menuItem)
+        private void AddMenuItem(string path, DebugMenuItem debugMenuItem)
         {
             path = path.ToLower();
             var splitPath = path.Split('/');
@@ -55,10 +55,10 @@ namespace Utils
             {
                 if (pathLevel == string.Empty) continue;
 
-                var nextPage = page.Items.FirstOrDefault(item => item is MenuPage && item.Title == pathLevel) as MenuPage;
+                var nextPage = page.Items.FirstOrDefault(item => item is DebugMenuPage && item.Title == pathLevel) as DebugMenuPage;
                 if (nextPage == null)
                 {
-                    nextPage = new MenuPage(pathLevel)
+                    nextPage = new DebugMenuPage(pathLevel)
                     {
                         Parent = page
                     };
@@ -68,14 +68,14 @@ namespace Utils
                 page = nextPage;
             }
 
-            if (menuItem is MenuPage addedPage)
+            if (debugMenuItem is DebugMenuPage addedPage)
                 addedPage.Parent = page;
-            page.AddItem(menuItem);
+            page.AddItem(debugMenuItem);
         }
 
         private void Init()
         {
-            _rootPage = new MenuPage("");
+            _rootPage = new DebugMenuPage("");
             _currentPage = _rootPage;
             _document = _instance.GetComponent<UIDocument>();
         }
@@ -131,14 +131,14 @@ namespace Utils
                 _listRoot.Children().First().Focus();
         }
 
-        internal void SetPage(MenuPage page)
+        internal void SetPage(DebugMenuPage page)
         {
             _currentPage = page;
             RenderCurrentPage();
             _pathLabel.text = GetPath(page);
         }
 
-        private string GetPath(MenuPage page)
+        private string GetPath(DebugMenuPage page)
         {
             _stringBuilder.Clear();
             while (page.Parent != null)
@@ -165,13 +165,13 @@ namespace Utils
         public void AddValueSwitcher(string fullPath, Func<object> valueGetter, Action nextValueAction, Action previousValueAction = null)
         {
             SplitPathAndItemName(fullPath, out var path, out var itemName);
-            AddMenuItem(path, new MenuValueSwitcher(itemName, valueGetter, nextValueAction, previousValueAction));
+            AddMenuItem(path, new DebugMenuValueSwitcher(itemName, valueGetter, nextValueAction, previousValueAction));
         }
 
         public void AddAction(string fullPath, Action action)
         {
             SplitPathAndItemName(fullPath, out var path, out var itemName);
-            AddMenuItem(path, new MenuAction(itemName, action));
+            AddMenuItem(path, new DebugMenuAction(itemName, action));
         }
 
         private void SplitPathAndItemName(string fullPath, out string path, out string itemName)
