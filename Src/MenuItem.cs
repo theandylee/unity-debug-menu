@@ -1,6 +1,6 @@
 using UnityEngine.UIElements;
 
-namespace DebugMenu
+namespace Utils
 {
     public abstract class MenuItem
     {

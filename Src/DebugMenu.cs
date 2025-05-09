@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace DebugMenu
+namespace Utils
 {
     public class DebugMenu : MonoBehaviour
     {

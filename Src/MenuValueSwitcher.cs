@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.UIElements;
 
-namespace DebugMenu
+namespace Utils
 {
     public class MenuValueSwitcher : MenuItem
     {

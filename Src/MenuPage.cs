@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-namespace DebugMenu
+namespace Utils
 {
     internal class MenuPage : MenuItem
     {
