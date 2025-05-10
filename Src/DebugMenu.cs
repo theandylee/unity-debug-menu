@@ -161,9 +161,23 @@ namespace Utils
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (_currentPage.Parent != null)
-                    SetPage(_currentPage.Parent);
+                if (!PrevPage())
+                    Toggle();
             }
+            
+            if (Input.GetKeyDown(KeyCode.Backspace))
+                PrevPage();
+        }
+
+        private bool PrevPage()
+        {
+            if (_currentPage.Parent != null)
+            {
+                SetPage(_currentPage.Parent);
+                return true;
+            }
+            
+            return false;
         }
 
         public void AddValueSwitcher(string fullPath, Func<object> valueGetter, Action nextValueAction, Action previousValueAction = null)
