@@ -35,10 +35,10 @@ namespace Utils
         private DebugMenuPage _currentPage;
         private readonly StringBuilder _stringBuilder = new(1024);
 
-        private bool Active
+        public bool IsActive
         {
             get => _document.enabled;
-            set
+            private set
             {
                 _document.enabled = value;
                 if (_document.enabled)
@@ -91,11 +91,11 @@ namespace Utils
 
         public void Toggle()
         {
-            _instance.Active = !_instance.Active;
+            _instance.IsActive = !_instance.IsActive;
 
-            OnToggle?.Invoke(_instance.Active);
+            OnToggle?.Invoke(_instance.IsActive);
             
-            if (_instance.Active)
+            if (_instance.IsActive)
                 SetPage(_rootPage);
         }
 
